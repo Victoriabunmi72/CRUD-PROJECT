@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'students/styles.css' %}">
 </head>
 <body>
+    <div class="container">
     <h1>Delete Student</h1>
     <p>Are you sure you want to delete "{{ student.name }}"?</p>
     <form method="post">
@@ -13,5 +14,6 @@
         <button type="submit">Yes, delete</button>
     </form>
     <a href="{% url 'student_list' %}">Cancel</a>
+    </div>
 </body>
 </html>
