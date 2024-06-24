@@ -7,11 +7,11 @@ from .forms import StudentForm
 
 def student_list(request):
     students = Student.objects.all()
-    return render(request, 'students/student_list.html', {'students': students})
+    return render(request, 'students/list.html', {'students': students})
 
 def student_detail(request, id):
     student = get_object_or_404(Student, id=id)
-    return render(request, 'students/student_detail.html', {'student': student})
+    return render(request, 'students/detail.html', {'student': student})
 
 def student_create(request):
     if request.method == 'POST':
@@ -21,7 +21,7 @@ def student_create(request):
             return redirect('student_list')
     else:
         form = StudentForm()
-    return render(request, 'students/student_form.html', {'form': form})
+    return render(request, 'students/form.html', {'form': form})
 
 def student_update(request, id):
     student = get_object_or_404(Student, id=id)
@@ -32,11 +32,11 @@ def student_update(request, id):
             return redirect('student_list')
     else:
         form = StudentForm(instance=student)
-    return render(request, 'students/student_form.html', {'form': form})
+    return render(request, 'students/form.html', {'form': form})
 
 def student_delete(request, id):
     student = get_object_or_404(Student, id=id)
     if request.method == 'POST':
         student.delete()
         return redirect('student_list')
-    return render(request, 'students/student_confirm_delete.html', {'student': student})
+    return render(request, 'students/confirm_delete.html', {'student': student})
